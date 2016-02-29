@@ -29,7 +29,26 @@ angular.module('starter', ['ionic', 'user', 'ngCordova'])
   // Learn more here: https://github.com/angular-ui/ui-router
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
-//  $stateProvider
+  $urlRouterProvider.otherwise('/')
+  $stateProvider
+
+    .state('home',{
+      url:'/',
+      views:{
+        home:{
+          templateUrl:'view/login.html'
+        }
+      }
+    })
+
+    .state('register',{
+      url:'/register',
+      views:{
+        register:{
+          templateUrl:'view/register.html'
+        }
+      }
+    })
 
 //  .state('user', {
 //    url: '/user',

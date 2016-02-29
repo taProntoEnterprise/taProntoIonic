@@ -1,0 +1,28 @@
+<ion-pane>
+
+
+   <ion-content>
+    <div ng-controller='UserController as userCtrl'>
+      <div class="list">
+      	<img class="center" src="img/logo.png">
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Username</span>
+		      <input type="text" placeholder="Username" data-ng-model="userCtrl.user. username">
+	     </label>
+  	  <label class="item item-input item-floating-label">
+			 <span class="input-label">Password</span>
+			 <input type="password" placeholder="Password" data-ng-model="userCtrl.user.  password">
+	   </label>
+  	</div>
+
+  	<button class="button button-block button-positive " ng-click="userCtrl.saveUser()">Login</button>
+
+
+    </div>
+    <a href="#/register" style="margin-left: 10px;font-size: 18px"> Register</a>
+
+  </ion-content>
+
+
+
+</ion-pane>
