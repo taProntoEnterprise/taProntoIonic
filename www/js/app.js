@@ -32,13 +32,40 @@ angular.module('starter', ['ionic', 'user', 'ngCordova'])
   $urlRouterProvider.otherwise('/')
   $stateProvider
   
-  .state('produtos', {
-    url: '/produtos',
+  .state('servicos', {
+    url: '/servicos',
     views: {
-     produtos: {
+     servicos: {
         templateUrl: 'view/listagem.html'
-        //controller: 'ProdutosController as produtosCtrl'
+        //controller: 'ServicosController as produtosCtrl'
       }
     }
   })  
+    .state('home',{
+      url:'/',
+      views:{
+        home:{
+          templateUrl:'view/login.html'
+        }
+      }
+    })
+
+    .state('register',{
+      url:'/register',
+      views:{
+        register:{
+          templateUrl:'view/register.html'
+        }
+      }
+    })
+
+//  .state('user', {
+//    url: '/user',
+//    views: {
+//     'inscribePerson': {
+//        templateUrl: 'templates/inscribePerson.html',
+//        controller: 'UserController as userCtrl'
+//      }
+//    }
+//  })  
 });
