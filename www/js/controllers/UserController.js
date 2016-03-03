@@ -14,8 +14,4 @@ userModule.controller('UserController', function($scope, $http, $cordovaToast) {
 			data: self.user
 	}).then(function(){ alert('Usuário cadastrado com sucesso.');}, function(info) {$cordovaToast.showLongBottom('Erro ao salvar usuário.')});
 	};
-
-	this.redirecionaParaListagem = function() {
-		state.go()
-	};
 });
