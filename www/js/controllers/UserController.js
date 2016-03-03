@@ -26,10 +26,10 @@ userModule.controller('UserController', function($scope, $http, $cordovaToast) {
 			headers: headers,
 			data: self.user
 		}).then(function(response){
-			console.log("Deu Certo "+response.data);
-			window.location.href="#";
+			window.location.href="#/servicos"
+			location.reload();
 		}, function(response){
-			console.log("Deu Errado "+response.data);
+				alert("Error trying to login");
 		});
 
 	};
