@@ -40,4 +40,14 @@ angular.module('starter', ['ionic', 'user', 'ngCordova'])
 //      }
 //    }
 //  })  
+
+ /* .state('produtos', {
+    url: '/produtos',
+    views: {
+     'inscribePerson': {
+        templateUrl: 'www/views/listagem.html',
+        controller: 'ProdutosController as produtosCtrl'
+      }
+    }
+  })  */
 });

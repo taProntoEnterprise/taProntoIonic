@@ -17,12 +17,14 @@
 
     <!-- cordova script (this will be a 404 during development) -->
 	<script src="lib/ngCordova/dist/ng-cordova.js"></script>
-    <script src="cordova.js"></script>
+  <script src="cordova.js"></script>
 
-    <!-- your app's js -->
-    <script src="js/app.js"></script>
+  <script src="js/app.js"></script>
 	
+  <!--             Controllers            -->
 	<script src="js/controllers/UserController.js"></script>
+  <script src="js/controllers/ProdutoController.js"></script>
+  <script src="js/controllers/ProdutosController.js"></script>
   </head>
   <body ng-app="starter">
 
@@ -31,21 +33,24 @@
         <h1 class="title">Cadastrar Usuário</h1>
       </ion-header-bar>
       <ion-content>
-		  <div ng-controller='UserController as userCtrl'>
-			<div class="list">
-			  <label class="item item-input item-floating-label">
-				<span class="input-label">Username</span>
-				<input type="text" placeholder="Username" data-ng-model="userCtrl.user.username">
-			  </label>
-			  <label class="item item-input item-floating-label">
-				<span class="input-label">Password</span>
-				<input type="password" placeholder="Password" data-ng-model="userCtrl.user.password">
-			  </label>
-			</div>
-			<button class="button button-block button-positive" ng-click="userCtrl.saveUser()">
-				Finalizar cadastro
-			</button>
-		  </div>
+  		  <div ng-controller='UserController as userCtrl'>
+    			<div class="list">
+    			  <label class="item item-input item-floating-label">
+    				<span class="input-label">Username</span>
+    				<input type="text" placeholder="Username" data-ng-model="userCtrl.user.username">
+    			  </label>
+    			  <label class="item item-input item-floating-label">
+    				<span class="input-label">Password</span>
+    				<input type="password" placeholder="Password" data-ng-model="userCtrl.user.password">
+    			  </label>
+    			</div>
+    			<button class="button button-block button-positive" ng-click="userCtrl.saveUser()">
+    				Finalizar cadastro
+    			</button>
+          <button class="button button-block button-positive" ng-click="userCtrl.redirecionaParaListagem()">
+            Meus produtos 
+          </button>
+  		  </div>
       </ion-content>
     </ion-pane>
   </body>
