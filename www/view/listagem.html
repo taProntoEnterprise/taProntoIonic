@@ -1,57 +1,14 @@
-<ion-pane>
-  <ion-header-bar class="bar-stable">
-    <h1 class="title">Listar serviços</h1>
+<ion-pane ng-controller="OrdersController as ordersCtrl">
+  <ion-header-bar class="bar-positive">
+    <button class="button icon ion-navicon"></button>
+    <h1 class="title">Meus pedidos</h1>
   </ion-header-bar>
   <ion-content>
-    <div ng-controller="ServicosController as produtosCtrl">
-        <table class="table table-striped" >
-            <tr>
-                <td title="'Fornecedor'" >
-                    Fornecedor</td>
-                <td title="'Cliente'">
-                    Cliente</td>
-                <td title="'Status'" >
-                    Status</td>
-                <td title="'Data de requisiçao'" >
-                    Data de requisiçao</td>
-            </tr>
-            <tr ng-repeat="service in produtosCtrl.services">
-                <td title="'Fornecedor'" >
-                    {{service.generator}}</td>
-                <td title="'Cliente'">
-                    {{service.client}}</td>
-                <td title="'Status'" >
-                    {{service.status}}</td>
-                <td title="'Data de requisiçao'" >
-                    {{service.creation_date}}</td>
-            </tr>
-        </table>
-    </div>
+    <ion-list>
+      <ion-item ng-repeat="order in ordersCtrl.services"
+                href="#/order/{{order.id}}" >
+        {{order.description}}.
+      </ion-item>
+    </ion-list>
   </ion-content>
 </ion-pane>
-
-<!--ion-pane>
-      <ion-header-bar class="bar-stable">
-        <h1 class="title">Cadastrar Usuário</h1>
-      </ion-header-bar>
-      <ion-content>
-  		  <div ng-controller='UserController as userCtrl'>
-    			<div class="list">
-    			  <label class="item item-input item-floating-label">
-    				<span class="input-label">Username</span>
-    				<input type="text" placeholder="Username" data-ng-model="userCtrl.user.username">
-    			  </label>
-    			  <label class="item item-input item-floating-label">
-    				<span class="input-label">Password</span>
-    				<input type="password" placeholder="Password" data-ng-model="userCtrl.user.password">
-    			  </label>
-    			</div>
-    			<button class="button button-block button-positive" ng-click="userCtrl.saveUser()">
-    				Finalizar cadastro
-    			</button>
-          <button class="button button-block button-positive" ng-click="userCtrl.redirecionaParaListagem()">
-            Meus produtos 
-          </button>
-  		  </div>
-      </ion-content>
-    </ion-pane-->

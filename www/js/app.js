@@ -24,11 +24,6 @@ angular.module('starter', ['ionic', 'user', 'ngCordova','service'])
 })
   
 .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
- 
-  // Ionic uses AngularUI Router which uses the concept of states
-  // Learn more here: https://github.com/angular-ui/ui-router
-  // Set up the various states which the app can be in.
-  // Each state's controller can be found in controllers.js
   $urlRouterProvider.otherwise('/');
   $stateProvider
   
@@ -56,15 +51,5 @@ angular.module('starter', ['ionic', 'user', 'ngCordova','service'])
           templateUrl:'view/register.html'
         }
       }
-    })
-
-//  .state('user', {
-//    url: '/user',
-//    views: {
-//     'inscribePerson': {
-//        templateUrl: 'templates/inscribePerson.html',
-//        controller: 'UserController as userCtrl'
-//      }
-//    }
-//  })  
+    }) 
 });
