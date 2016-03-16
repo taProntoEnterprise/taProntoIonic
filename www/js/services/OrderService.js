@@ -14,7 +14,7 @@ servicesModule.service("OrderService", function($http) {
 	*
    */
 	this.getOrder = function (id){
-		var url = BASE_URL + "/order/:id"
+		var url = BASE_URL + "/orderByClient/:id"
 		url = self.getURL(url, id);
 		return $http.get(url, {});
 	};
