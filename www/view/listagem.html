@@ -6,7 +6,7 @@
   <ion-content>
     <ion-list>
       <ion-item ng-repeat="order in ordersCtrl.orders"
-                href="#/order/{{order.id}}" >
+                href="#/order/{{order._id}}" >
         {{order.description}}.
       </ion-item>
     </ion-list>

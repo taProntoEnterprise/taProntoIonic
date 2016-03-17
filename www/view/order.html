@@ -1,0 +1,36 @@
+<ion-pane ng-controller="SingleOrderController as orderCtrl">
+  <ion-header-bar class="bar-positive">
+    <button class="button icon ion-navicon"></button>
+    <h1 class="title">Pedido {{ orderCtrl.order[0].code }}</h1>
+  </ion-header-bar>
+  <ion-content>
+  <div class="row">
+	  	<ion-label class="col-sm-3">Descrição: </ion-label>
+	    <ion-label>{{ orderCtrl.order[0].description }}</ion-label>
+    </div>
+  	<div class="row">
+	  	<ion-label class="col-sm-3">Serviço: </ion-label>
+	    <ion-label>{{ orderCtrl.order[0].service }}</ion-label>
+    </div>
+    <div class="row">
+	  	<ion-label class="col-sm-3">Empresa: </ion-label>
+	    <ion-label>Banquete</ion-label>
+    </div>
+    <div class="row">
+	  	<ion-label class="col-sm-3">Data de solicitação: </ion-label>
+	    <ion-label>12/02/2016</ion-label>
+    </div>
+    <div class="row">
+	  	<ion-label class="col-sm-3">Status: </ion-label>
+	    <ion-label>{{ orderCtrl.order[0].status }}</ion-label>
+    </div>
+    <div class="row">
+	  	<ion-label class="col-sm-3">Preço: </ion-label>
+	    <ion-label>{{ orderCtrl.order[0].price? orderCtrl.order[0].price : "não informado" }}</ion-label>
+    </div>
+     <div class="row">
+	  	<ion-label class="col-sm-3">Descrição: </ion-label>
+	    <ion-label>{{ orderCtrl.order[0].description }}</ion-label>
+    </div>
+  </ion-content>
+</ion-pane>
