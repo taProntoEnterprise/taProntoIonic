@@ -29,4 +29,18 @@
 	    <ion-label class="col-md-8">{{ orderCtrl.order[0].description }}</ion-label>
     </div>
   </ion-content>
+
+  <div class="bar bar-footer">
+    <div class="row">
+      <div class="col-sm-4">
+          <button ng-click="orderCtrl.voltar()" class="button icon-left ion-left ion-chevron-left button-positive"></button>
+      </div>
+      <div class="col-sm-4">
+          <button class="button icon-left icon-left ion-home button-positive"></button>
+      </div>
+      <div class="col-sm-4">
+          <button class="button icon ion-navicon button-positive"></button>
+      </div>
+    </div>
+  </div>
 </ion-pane>
