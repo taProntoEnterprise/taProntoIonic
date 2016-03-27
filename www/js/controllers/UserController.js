@@ -1,7 +1,8 @@
 var userModule = angular.module('user', []);
 
-userModule.controller('UserController', function($scope, $http, $cordovaToast) {
+userModule.controller('UserController', function($scope, $http, $cordovaToast,UserService) {
 	var self = this;
+	var BASE_URL ="http://localhost:3000/users/";
 	
 	this.user = {};
 	
@@ -9,7 +10,7 @@ userModule.controller('UserController', function($scope, $http, $cordovaToast) {
 		var headers = {"Content-Type": "application/json"};
 		$http({
 			method: 'POST',
-			url: 'http://localhost:3000/users/adduser',
+			url: 'http://localhost:3000/users/',
 			headers: headers,
 			data: self.user
 	}).then(function(){
@@ -22,15 +23,15 @@ userModule.controller('UserController', function($scope, $http, $cordovaToast) {
 		var headers = {"Content-Type": "application/json"};
 		$http({
 			method: 'POST',
-			url: 'http://localhost:3000/users/login',
+			url: BASE_URL+'login',
 			headers: headers,
-			data: self.user
+			data: this.user
 		}).then(function(response){
 			window.location.href="#/servicos"
 			location.reload();
+			UserService.setUser(response.data.result.data);
 		}, function(response){
-				alert("Error trying to login");
-		});
-
+			alert("Error trying to login");
+		});	
 	};
 });
