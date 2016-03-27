@@ -3,19 +3,18 @@ var servicesModule = angular.module('service');
 servicesModule.service("OrderService", function($http) {
 
 	var self = this;
-	var BASE_URL = "http://tapronto1.herokuapp.com/orders"
+	var BASE_URL = "http://localhost:3000/orders/"
 
    /**
-	* Retorna a lista de pedidos associadas ao id de pessoa
+	* Retorna a lista de pedidos associadas ao id de user
 	* passado como parametro.
 	* 
 	* @param id O id da pessoa cujos pedidos serao retornados
 	* @return A promise da requisiçao de GET.
 	*
    */
-	this.getOrder = function (id){
-		var url = BASE_URL + "/orderByClient/:id"
-		url = self.getURL(url, id);
+	this.getOrder = function (userId){
+		var url = BASE_URL + "?userId="+userId;
 		return $http.get(url, {});
 	};
 
@@ -27,9 +26,8 @@ servicesModule.service("OrderService", function($http) {
 	* @return A promise da requisiçao de GET.
 	*
    */
-	this.getSingleOrder = function (id){
-		var url = BASE_URL + "/order/:id"
-		url = self.getURL(url, id);
+	this.getSingleOrder = function (orderId){
+		var url = BASE_URL +orderId;
 		return $http.get(url, {});
 	};
 
@@ -40,8 +38,7 @@ servicesModule.service("OrderService", function($http) {
 	* @returns a promise da requisiçao de POST
 	*/
 	this.addOrder = function (order){
-		var url = BASE_URL + "/addorder";
-		return $http.post(url, order, {});
+		return $http.post(BASE_URL, order, {});
 	}
 
 	/**

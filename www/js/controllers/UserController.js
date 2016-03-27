@@ -1,7 +1,8 @@
 var userModule = angular.module('user', []);
 
-userModule.controller('UserController', function($scope, $http, $cordovaToast) {
+userModule.controller('UserController', function($scope, $http, $cordovaToast, UserService) {
 	var self = this;
+	var BASE_URL ="https://tapronto1.herokuapp.com/users/";
 	
 	this.user = {};
 	
@@ -9,27 +10,26 @@ userModule.controller('UserController', function($scope, $http, $cordovaToast) {
 		var headers = {"Content-Type": "application/json"};
 		$http({
 			method: 'POST',
-			url: 'https://tapronto1.herokuapp.com/users',
+			url: BASE_URL,
 			headers: headers,
 			data: self.user
 	}).then(function(){
-	 	window.location.href="/";
+		$cordovaToast.showLongBottom('Usuário cadastrado com sucesso.');
+	 	window.location.href="/"
 	}, function(info) {
-		$cordovaToast.showLongBottom('Erro ao salvar usuário.')
-		});
+		$cordovaToast.showLongBottom('Erro ao salvar usuário.')});
 	};
 
 	this.login=function(){
 		var headers = {"Content-Type": "application/json"};
 		$http({
 			method: 'POST',
-			url: 'https://tapronto1.herokuapp.com/users/login',
+			url: BASE_URL+'login',
 			headers: headers,
-			data: self.user
+			data: this.user
 		}).then(function(response){
 			var user = response.data.result.data;
-			console.log(user);
-			console.log(user.person);
+			UserService.setUser(user);
 			if (user.person === undefined) {
 				window.location.href="#/registerPerson/" + user._id;
 			} else {
@@ -37,8 +37,7 @@ userModule.controller('UserController', function($scope, $http, $cordovaToast) {
 				location.reload();
 			}
 		}, function(response){
-				alert("Error trying to login");
-		});
-
+			$cordovaToast.showLongBottom('Usuário ou senha inválidos.');
+		});	
 	};
 });
