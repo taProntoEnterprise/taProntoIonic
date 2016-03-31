@@ -7,6 +7,11 @@ personModule.controller('PersonController', function($scope, $http, $cordovaToas
 	
 	this.savePerson = function() {
 		var headers = {"Content-Type": "application/json"};
+		if (this.person.email === undefined || this.person.name === undefined
+			|| this.person.name.trim() === '') {
+			$cordovaToast.showLongBottom('Preencha todos os campos corretamente.');
+			return;
+		}
 		$ionicLoading.show();
 		$http({
 			method: 'POST',
