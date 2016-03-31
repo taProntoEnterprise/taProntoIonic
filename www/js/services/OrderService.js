@@ -3,7 +3,8 @@ var servicesModule = angular.module('service');
 servicesModule.service("OrderService", function($http) {
 
 	var self = this;
-	var BASE_URL = "https://tapronto1.herokuapp.com/orders/"
+	var BASE_URL = "https://tapronto1.herokuapp.com/orders"
+	var BASE_URL = "http://localhost:3000/orders"
 
    /**
 	* Retorna a lista de pedidos associadas ao id de user
@@ -27,7 +28,7 @@ servicesModule.service("OrderService", function($http) {
 	*
    */
 	this.getSingleOrder = function (orderId){
-		var url = BASE_URL +orderId;
+		var url = BASE_URL + "/" + orderId;
 		return $http.get(url, {});
 	};
 

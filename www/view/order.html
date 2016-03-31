@@ -1,6 +1,7 @@
 <ion-pane ng-controller="SingleOrderController as orderCtrl">
   <ion-header-bar class="bar-positive">
-    <button class="button icon ion-navicon"></button>
+    <!--button class="button icon ion-navicon"></button-->
+    <button ng-click="voltar()" class="button icon-left ion-left ion-chevron-left button-positive"></button>
     <h1 class="title">Pedido {{ orderCtrl.order[0].code }}</h1>
   </ion-header-bar>
   <ion-content>
@@ -33,14 +34,10 @@
   <div class="bar bar-footer">
     <div class="row">
       <div class="col-sm-4">
-          <button ng-click="orderCtrl.voltar()" class="button icon-left ion-left ion-chevron-left button-positive"></button>
-      </div>
-      <div class="col-sm-4">
-          <button class="button icon-left icon-left ion-home button-positive"></button>
-      </div>
-      <div class="col-sm-4">
-          <button class="button icon ion-navicon button-positive"></button>
+          <!--button ng-click="voltar()" class="button icon-left ion-left ion-chevron-left button-positive"></button-->
       </div>
     </div>
   </div>
+  
+</ion-nav-bar>
 </ion-pane>

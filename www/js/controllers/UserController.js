@@ -1,6 +1,6 @@
-var userModule = angular.module('user', []);
+var userModule = angular.module('user', ['ui.router']);
 
-userModule.controller('UserController', function($scope, $http, $cordovaToast, UserService, $ionicLoading) {
+userModule.controller('UserController', function($scope, $http, $cordovaToast, UserService, $ionicLoading, $state) {
 	var self = this;
 	var BASE_URL ="https://tapronto1.herokuapp.com/users/";
 	
@@ -17,7 +17,8 @@ userModule.controller('UserController', function($scope, $http, $cordovaToast, U
 	}).then(function(){
 		$ionicLoading.hide();
 		$cordovaToast.showLongBottom('Usuário cadastrado com sucesso.');
-	 	window.location.href="/";
+	 	window.location.href="#/";
+	 	location.reload();
 	}, function(info) {
 		$ionicLoading.hide();
 		$cordovaToast.showLongBottom("Usuário ou senha inválidos");
@@ -37,8 +38,10 @@ userModule.controller('UserController', function($scope, $http, $cordovaToast, U
 			UserService.setUser(user);
 			$ionicLoading.hide();
 			if (user.person === undefined) {
+				//$state.go("registerPerson", {id: user._id});
 				window.location.href="#/registerPerson/" + user._id;
 			} else {
+				//$state.go("servicos", location="#/servicos", reload=true);
 				window.location.href="#/servicos";
 				location.reload();
 			}
@@ -47,4 +50,9 @@ userModule.controller('UserController', function($scope, $http, $cordovaToast, U
 			$cordovaToast.showLongBottom('Usuário ou senha inválidos.');
 		});	
 	};
+
+	$scope.cancelar = function () {
+		window.location.href="#/";
+		location.reload();
+	}
 });

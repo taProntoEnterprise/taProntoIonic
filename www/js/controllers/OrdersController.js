@@ -7,12 +7,14 @@ servicesModule.controller('OrdersController', function ($scope, $http, $cordovaT
 
 	(function main(){
 		$ionicLoading.show();
-		var promise = OrderService.getOrder('56ecc5e178695f8030ca40eb');
+		var promise = OrderService.getOrder('56e809e842046b891eb6a125');
 		promise.then(function (response){
 			$ionicLoading.hide();
 			if (response != undefined) {
 				self.orders = response.data.result.data;
 			}
-		})
+		}, function (erro) {
+			$cordovaToast.showLongBottom("Não foi possível carregar os seus pedidos.");
+		});
 	})();
 });
