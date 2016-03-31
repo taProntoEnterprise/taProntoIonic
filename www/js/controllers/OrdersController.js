@@ -17,4 +17,9 @@ servicesModule.controller('OrdersController', function ($scope, $http, $cordovaT
 			$cordovaToast.showLongBottom("Não foi possível carregar os seus pedidos.");
 		});
 	})();
+
+	$scope.logout = function () {
+		window.location.href="#/";
+		location.reload();
+	}
 });
