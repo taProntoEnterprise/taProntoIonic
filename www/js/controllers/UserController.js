@@ -50,6 +50,11 @@ userModule.controller('UserController', function($scope, $http, $cordovaToast, U
 			$cordovaToast.showLongBottom('Usuário ou senha inválidos.');
 		});	
 	};
+	
+	this.goToRegister = function() {
+		window.location.href="#/register";
+		location.reload();
+	};
 
 	$scope.cancelar = function () {
 		window.location.href="#/";

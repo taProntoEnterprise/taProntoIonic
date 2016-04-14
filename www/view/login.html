@@ -1,24 +1,19 @@
-<ion-pane>
+<ion-pane style="background: linear-gradient(to bottom right, gray, #0a6b47);">
    <ion-content>
+   <div>
     <div ng-controller='UserController as userCtrl'>
       <div class="list">
-      	<img class="center" src="img/logo.png">
-        <label class="item item-input item-floating-label">
-          <span class="input-label">Username</span>
-		      <input type="text" placeholder="Username" data-ng-model="userCtrl.user.username">
-	     </label>
-  	  <label class="item item-input item-floating-label">
-			 <span class="input-label">Password</span>
-			 <input type="password" placeholder="Password" data-ng-model="userCtrl.user.password">
-	   </label>
+      	<img class="center" style="width:90%" src="img/logo.png" style="margin-top: 10%">
+		<input type="text" style="margin-top:20%" placeholder="Username" data-ng-model="userCtrl.user.username" class="inputLogin">
+		<input type="password" placeholder="Password" data-ng-model="userCtrl.user.password" class="inputLogin">
   	</div>
 
-  	<button class="button button-block button-positive " ng-click="userCtrl.login()">Login</button>
+  	<button class="buttonLogin button button-positive" ng-click="userCtrl.login()">Login</button>
 
 
     </div>
-    <a href="#/register" style="margin-left: 10px;font-size: 18px"> Register</a>
-
+    <button ng-click="userCtrl.goToRegister()" class="buttonLogin button button-positive"> Register</button>
+	</div>
   </ion-content>
 
 
