@@ -1,9 +1,10 @@
-<ion-pane>
+<ion-side-menus ng-controller='PersonController as personCtrl'>
+<ion-side-menu-content>
     <ion-header-bar class="bar-stable">
       <h1 class="title">Dados Pessoais</h1>
     </ion-header-bar>
     <ion-content>
-    <div ng-controller='PersonController as personCtrl'>
+    <div>
       <div class="list">
         <label class="item item-input item-floating-label">
           <span class="input-label">Nome</span>
@@ -23,4 +24,20 @@
 
     </div>
   </ion-content>
-</ion-pane>
+</ion-side-menu-content>
+<ion-side-menu side="left" is-enabled="personCtrl.shouldLeftSideMenuBeEnabled()">
+    <header class="bar bar-header bar-stable">
+      <h1 class="title">Left</h1>
+    </header>
+    <ion-content class="has-header">
+      <ion-list>
+        <ion-item menu-close href="#/registerPerson/{{personCtrl.person.user}}">
+          Perfil
+        </ion-item>
+        <ion-item menu-close ng-click="personCtrl.goToOrders()">
+          Pedidos
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>

@@ -4,7 +4,6 @@ userModule.factory("UserService",function() {
 	var user = {};
 	
 	user.getLoggedUserId = function () {
-		console.log(user._id);
 		return user._id;
 	};	
 

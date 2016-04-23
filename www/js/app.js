@@ -27,8 +27,8 @@ angular.module('starter', ['ionic', 'user', 'ngCordova','service','order', 'pers
   $urlRouterProvider.otherwise('/');
   $stateProvider
   
-  .state('servicos', {
-    url: '/servicos',
+  .state('orders', {
+    url: '/orders/:id',
     views: {
      servicos: {
         templateUrl: 'view/listagem.html'

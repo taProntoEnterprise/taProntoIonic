@@ -42,7 +42,7 @@ userModule.controller('UserController', function($scope, $http, $cordovaToast, U
 				window.location.href="#/registerPerson/" + user._id;
 			} else {
 				//$state.go("servicos", location="#/servicos", reload=true);
-				window.location.href="#/servicos";
+				window.location.href="#/orders/" + user._id;
 				location.reload();
 			}
 		}, function(response){
