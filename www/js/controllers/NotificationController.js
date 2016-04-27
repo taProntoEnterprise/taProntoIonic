@@ -5,7 +5,7 @@ notificationModule.controller("NotificationController", function($ionicLoading, 
 
 	this.notifications;
 
-	this.userId = $stateParams.id; //nao esta pegando o id, tem q colocar na mao aqui
+	this.userId = "571ec40d29c2dd41218a4388"; //$stateParams.id;
 
 	$scope.voltar = function() {
 	    $state.go("orders"); 

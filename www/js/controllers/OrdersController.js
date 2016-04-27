@@ -1,6 +1,6 @@
 var servicesModule = angular.module('service', []);
 
-servicesModule.controller('OrdersController', function ($scope, $http, $cordovaToast, OrderService,UserService, $ionicLoading, $stateParams, $state, $ionicSideMenuDelegate, NotificationService) {
+servicesModule.controller('OrdersController', function ($interval, $scope, $http, $cordovaToast, OrderService,UserService, $ionicLoading, $stateParams, $state, $ionicSideMenuDelegate, NotificationService) {
 	var self = this;
 
 	this.userId = $stateParams.id;
@@ -10,6 +10,10 @@ servicesModule.controller('OrdersController', function ($scope, $http, $cordovaT
 	self.notifications;
 
 	this.hasNotification = false;
+
+	this.interval = 30000;
+
+	this.pooling;
 
 	this.carregarOrders = function(){
 		$ionicLoading.show();
@@ -26,10 +30,9 @@ servicesModule.controller('OrdersController', function ($scope, $http, $cordovaT
 	};
 
 	this.carregarNotifications = function(){
-		$ionicLoading.show();
+		console.log("notifications");
 		var promise = NotificationService.getNotification(self.userId);
 		promise.then(function (response){
-			$ionicLoading.hide();
 			if (response != undefined) {
 				self.notifications = response.data.result.data;
 				if (self.notifications.length > 0) {
@@ -37,7 +40,6 @@ servicesModule.controller('OrdersController', function ($scope, $http, $cordovaT
 				};
 			}
 		}, function (erro) {
-			$ionicLoading.hide();
 			$cordovaToast.showLongBottom("Não foi possível carregar as notificacoes.");
 		});
 	};
@@ -66,7 +68,7 @@ servicesModule.controller('OrdersController', function ($scope, $http, $cordovaT
 		promise.then(function (response){
 			$ionicLoading.hide();
 			if (response != undefined) {
-				self.carregarNotifications();
+				//self.carregarNotifications();
 			}
 		}, function (erro) {
 			$ionicLoading.hide();
@@ -74,12 +76,18 @@ servicesModule.controller('OrdersController', function ($scope, $http, $cordovaT
 		});
 	};
 
-	$scope.changeState = function(state){
-		$state.go(state);
+	$scope.changeState = function(state, params){
+		console.log(state + params);
+		$state.go(state, params);
 	};
+
+	$scope.startPooling = function(){
+        self.pooling = $interval(self.carregarNotifications, self.interval);
+    };
 
 	(function main(){
 		self.carregarOrders();
-		self.carregarNotifications()
+		self.carregarNotifications();
+		$scope.startPooling();
 	})();
 });
