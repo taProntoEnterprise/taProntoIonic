@@ -1,43 +1,36 @@
 <ion-pane ng-controller="SingleOrderController as orderCtrl">
   <ion-header-bar class="bar-positive">
-    <!--button class="button icon ion-navicon"></button-->
     <button ng-click="voltar()" class="button icon-left ion-left ion-chevron-left button-positive"></button>
     <h1 class="title">Pedido {{ orderCtrl.order[0].code }}</h1>
   </ion-header-bar>
+ 
   <ion-content>
   	<div class="row">
 	  	<ion-label class="col-sm-4"><b>Serviço: </b></ion-label>
-	    <ion-label class="col-sm-8">{{ orderCtrl.order[0].description.split(" - ")[1] }}</ion-label>
+	    <ion-label class="col-sm-8">{{ orderCtrl.order.description.split(" - ")[1] }}</ion-label>
     </div>
     <div class="row">
 	  	<ion-label class="col-sm-4"><b>Empresa: </b></ion-label>
-	    <ion-label class="col-sm-8">{{ orderCtrl.order[0].description.split(" - ")[0] }}</ion-label>
+	    <ion-label class="col-sm-8">{{ orderCtrl.order.description.split(" - ")[0] }}</ion-label>
     </div>
     <div class="row">
 	  	<ion-label class="col-sm-4"><b>Data de solicitação: </b></ion-label>
-	    <ion-label class="col-sm-8">12/02/2016</ion-label>
+	    <ion-label class="col-sm-8">{{orderCtrl.order.creation_date}}</ion-label>
     </div>
     <div class="row">
 	  	<ion-label class="col-sm-4"><b>Status: </b></ion-label>
-	    <ion-label class="col-sm-8">{{ orderCtrl.order[0].status }}</ion-label>
+	    <ion-label class="col-sm-8">{{ orderCtrl.order.status }}</ion-label>
     </div>
     <div class="row">
 	  	<ion-label class="col-sm-4"><b>Preço: </b></ion-label>
-	    <ion-label class="col-sm-8">{{ orderCtrl.order[0].price? orderCtrl.order[0].price : "não informado" }}</ion-label>
+	    <ion-label class="col-sm-8">{{ orderCtrl.order.price? orderCtrl.order.price : "não informado" }}</ion-label>
     </div>
     <div class="row">
 	  	<ion-label class="col-md-4"><b>Descrição: </b></ion-label>
-	    <ion-label class="col-md-8">{{ orderCtrl.order[0].description }}</ion-label>
+	    <ion-label class="col-md-8">{{ orderCtrl.order.description }}</ion-label>
     </div>
   </ion-content>
 
   <div class="bar bar-footer">
-    <div class="row">
-      <div class="col-sm-4">
-          <!--button ng-click="voltar()" class="button icon-left ion-left ion-chevron-left button-positive"></button-->
-      </div>
-    </div>
   </div>
-  
-</ion-nav-bar>
 </ion-pane>

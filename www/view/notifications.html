@@ -1,0 +1,13 @@
+<ion-pane ng-controller="NotificationController as ctrl">
+  <ion-header-bar class="bar-positive">
+        <button ng-click="voltar()" class="button icon-left ion-left ion-chevron-left button-positive"></button>
+        <h1 class="title">Notificações</h1>
+  </ion-header-bar>  
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="notification in ctrl.notifications">
+        {{notification.message}}.
+      </ion-item>
+    </ion-list>
+  </ion-content> 
+</ion-pane>

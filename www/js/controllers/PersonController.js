@@ -2,6 +2,10 @@ var personModule = angular.module('person', []);
 
 personModule.controller('PersonController', function($scope, $http, $cordovaToast, $stateParams, $ionicLoading, PersonService, $ionicSideMenuDelegate) {
 	var self = this;
+
+	var BASE_URL ="https://tapronto1.herokuapp.com/person/";
+	
+	var BASE_URL = "http://localhost:3000/person/";
 	
 	this.person = {user: $stateParams.id};
 	
@@ -21,19 +25,17 @@ personModule.controller('PersonController', function($scope, $http, $cordovaToas
 		$ionicLoading.show();
 		$http({
 			method: self.editMode ? 'PUT':'POST',
-			url: 'https://tapronto1.herokuapp.com/person/?userId=' + self.person.user,
+			url: BASE_URL + '?userId=' + self.person.user,
 			headers: headers,
 			data: self.person
 		}).then(function(){
 			$ionicLoading.hide();
 		    $cordovaToast.showLongBottom('Perfil atualizado com sucesso.');
 			if (!self.editMode) {
-				window.location.href="#/orders/" + $stateParams.id;
-				location.reload();
+				$state.go("orders")
 			}
 		}, function(info) {
 			$ionicLoading.hide();
-			console.log(info);
 			$cordovaToast.showLongBottom('Erro ao salvar usuário.');
 		});
 	};

@@ -3,6 +3,7 @@ var userModule = angular.module('user', ['ui.router']);
 userModule.controller('UserController', function($scope, $http, $cordovaToast, UserService, $ionicLoading, $state) {
 	var self = this;
 	var BASE_URL ="https://tapronto1.herokuapp.com/users/";
+	var BASE_URL = "http://localhost:3000/users/";
 	
 	this.user = {};
 	
@@ -17,8 +18,7 @@ userModule.controller('UserController', function($scope, $http, $cordovaToast, U
 	}).then(function(){
 		$ionicLoading.hide();
 		$cordovaToast.showLongBottom('Usuário cadastrado com sucesso.');
-	 	window.location.href="#/";
-	 	location.reload();
+	 	$state.go("home");
 	}, function(info) {
 		$ionicLoading.hide();
 		$cordovaToast.showLongBottom("Usuário ou senha inválidos");
@@ -52,12 +52,11 @@ userModule.controller('UserController', function($scope, $http, $cordovaToast, U
 	};
 	
 	this.goToRegister = function() {
-		window.location.href="#/register";
-		location.reload();
+		$state.go("register");
+
 	};
 
 	$scope.cancelar = function () {
-		window.location.href="#/";
-		location.reload();
+		$state.go("home");
 	}
 });

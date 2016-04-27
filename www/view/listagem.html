@@ -1,22 +1,27 @@
 <ion-side-menus ng-controller="OrdersController as ordersCtrl">
-<ion-side-menu-content>
-<ion-pane>
-  <ion-header-bar class="bar-positive">
-    
-    <h1 class="title">Meus pedidos</h1>
-    <button class="button ion-android-exit" ng-click="logout()"></button>
-  </ion-header-bar>
-  <ion-content>
-    <ion-list>
-      <ion-item ng-repeat="order in ordersCtrl.orders"
-                href="#/order/{{order._id}}" >
-        {{order.description}}.
-      </ion-item>
-    </ion-list>
-  </ion-content>
-</ion-pane>
-</ion-side-menu-content>
-<ion-side-menu side="left">
+  <ion-side-menu-content>
+    <ion-pane>
+      <ion-header-bar class="bar-positive">
+        <button class="button icon ion-navicon-round" ng-click="toggleLeft()"></button>
+        <button class="button ion-earth" ng-click="getNotifications()">
+        <span class="badge badge-assertive" ng-show="ordersCtrl.hasNotification">{{ordersCtrl.notifications.length}}</span>
+        </button>
+        <h1 class="title">Meus pedidos</h1>
+        <button class="button ion-android-exit" ng-click="logout()"></button>
+      </ion-header-bar>
+      
+      <ion-content>
+        <ion-list>
+          <ion-item ng-repeat="order in ordersCtrl.orders"
+                    href="#/order/{{order._id}}" >
+            {{order.description}}.
+          </ion-item>
+        </ion-list>
+        <button class="button ion-android-exit" ng-click="populan()">populan</button>
+      </ion-content>
+    </ion-pane>
+  </ion-side-menu-content>
+  <ion-side-menu side="left">
     <header class="bar bar-header bar-stable">
       <h1 class="title">Menu</h1>
     </header>
@@ -25,8 +30,14 @@
         <ion-item menu-close href="#/registerPerson/{{ordersCtrl.userId}}">
           Perfil
         </ion-item>
+        <ion-item menu-close ng-click="changeState('notification')">
+          Notificações
+        </ion-item>
         <ion-item menu-close href="#/orders/{{ordersCtrl.userId}}">
-          Pedidos
+          Histórico
+        </ion-item>
+        <ion-item menu-close href="#/orders/{{ordersCtrl.userId}}">
+          Bloqueados
         </ion-item>
       </ion-list>
     </ion-content>
