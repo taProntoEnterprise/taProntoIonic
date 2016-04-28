@@ -30,7 +30,6 @@ servicesModule.controller('OrdersController', function ($interval, $scope, $http
 	};
 
 	this.carregarNotifications = function(){
-		console.log("notifications");
 		var promise = NotificationService.getNotification(self.userId);
 		promise.then(function (response){
 			if (response != undefined) {
@@ -53,7 +52,7 @@ servicesModule.controller('OrdersController', function ($interval, $scope, $http
 	};
 
 	$scope.getNotifications =  function() {
-		$scope.changeState("notification");
+		$scope.changeState("notification", {id: self.userId});
 	};
 
 	$scope.populan =  function() {
@@ -79,6 +78,7 @@ servicesModule.controller('OrdersController', function ($interval, $scope, $http
 	$scope.changeState = function(state, params){
 		console.log(state + params);
 		$state.go(state, params);
+		location.reload();
 	};
 
 	$scope.startPooling = function(){

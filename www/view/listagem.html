@@ -27,10 +27,10 @@
     </header>
     <ion-content class="has-header">
       <ion-list>
-        <ion-item menu-close ng-click="changeState('registerPerson', {'id': ordersCtrl.userId})">
+        <ion-item menu-close ng-click="changeState('registerPerson', {id: ordersCtrl.userId})">
           Perfil
         </ion-item>
-        <ion-item menu-close ng-click="changeState('notification', {})">
+        <ion-item menu-close ng-click="changeState('notification', {id: ordersCtrl.userId})">
           Notificações
         </ion-item>
         <ion-item menu-close href="#/orders/{{ordersCtrl.userId}}">

@@ -40,7 +40,7 @@ angular.module('starter', ['ionic', 'user', 'ngCordova','service','order', 'pers
   })
   
   .state('notification',{
-    url:'/notification',
+    url:'/notification/:id',
     templateUrl:'view/notifications.html'
   });
 
