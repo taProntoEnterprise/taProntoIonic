@@ -6,7 +6,7 @@
         <button class="button ion-earth" ng-click="getNotifications()">
         <span class="badge badge-assertive" ng-show="ordersCtrl.hasNotification">{{ordersCtrl.notifications.length}}</span>
         </button>
-        <h1 class="title">Meus pedidos</h1>
+        <h1 class="title pull-left">Meus pedidos</h1>
         <button class="button ion-android-exit" ng-click="logout()"></button>
       </ion-header-bar>
       
@@ -17,7 +17,7 @@
             {{order.description}}.
           </ion-item>
         </ion-list>
-        <button class="button ion-android-exit" ng-click="populan()">populan</button>
+        <button class="button" ng-click="populan()"> Popular </button>
       </ion-content>
     </ion-pane>
   </ion-side-menu-content>
@@ -27,7 +27,7 @@
     </header>
     <ion-content class="has-header">
       <ion-list>
-        <ion-item menu-close ng-click="changeState('registerPerson', {id: ordersCtrl.userId})">
+        <ion-item menu-close ng-click="changeStatePerson()">
           Perfil
         </ion-item>
         <ion-item menu-close ng-click="changeState('notification', {id: ordersCtrl.userId})">
