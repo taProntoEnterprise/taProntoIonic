@@ -1,14 +1,15 @@
 var notificationModule = angular.module('notification', []);
 
-notificationModule.controller("NotificationController", function($ionicLoading, $scope, $stateParams, $cordovaToast, NotificationService, $state){
+notificationModule.controller("NotificationController", 
+	function($ionicLoading, $scope, $stateParams, $cordovaToast, NotificationService, $state, notificacoess){
 	var self = this;
 
-	this.notifications;
+	this.notifications = notificacoess;
 
 	this.userId = $stateParams.id;
 
 	$scope.voltar = function() {
-	    $state.go("orders"); 
+	    $state.go("orders", {id: self.userId}); 
 	};
 
 	this.carregarNotifications = function(){
