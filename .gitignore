@@ -7,3 +7,5 @@ plugins/
 .DS_Store
 */.DS_Store
 .gitconfig
+hooks/after_prepare/010_add_platform_class.js
+
