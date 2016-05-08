@@ -11,7 +11,7 @@ servicesModule.controller('OrdersController', function ($interval, $scope, $http
 
 	this.hasNotification = false;
 
-	this.interval = 30000;
+	this.interval = 3000;
 
 	this.pooling;
 
@@ -57,9 +57,9 @@ servicesModule.controller('OrdersController', function ($interval, $scope, $http
 
 	$scope.populan =  function() {
 		var nots = {};
-		nots.order = "571fd861ff7f11c9224b9a6e";
-		nots.notifier = "56fb2da2fd6394332e003eee";
-		nots.notified = "571ec40d29c2dd41218a4388";
+		nots.order = "57227390b0bcaa1600dc90af";
+		nots.notifier = self.userId;
+		nots.notified = self.userId;
 		nots.message = "taPronto";
 
 		$ionicLoading.show();
@@ -78,6 +78,12 @@ servicesModule.controller('OrdersController', function ($interval, $scope, $http
 	$scope.changeState = function(state, params){
 		console.log(state + params);
 		$state.go(state, params);
+		location.href()
+		location.reload();
+	};
+	
+	$scope.changeStatePerson = function(){
+		window.location.href = "#/registerPerson/"+ self.userId;
 		location.reload();
 	};
 

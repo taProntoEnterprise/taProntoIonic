@@ -3,9 +3,9 @@ var personModule = angular.module('person', []);
 personModule.controller('PersonController', function($scope, $http, $cordovaToast, $stateParams, $ionicLoading, PersonService, $ionicSideMenuDelegate) {
 	var self = this;
 
-	var BASE_URL ="https://tapronto1.herokuapp.com/person/";
+	var BASE_URL ="https://tapronto1.herokuapp.com/person";
 	
-	var BASE_URL = "http://localhost:3000/person/";
+	//var BASE_URL = "http://localhost:3000/person";
 	
 	this.person = {user: $stateParams.id};
 	
@@ -22,6 +22,8 @@ personModule.controller('PersonController', function($scope, $http, $cordovaToas
 			$cordovaToast.showLongBottom('Preencha todos os campos corretamente.');
 			return;
 		}
+		console.log("aquiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
+		console.log(self.editMode);
 		$ionicLoading.show();
 		$http({
 			method: self.editMode ? 'PUT':'POST',

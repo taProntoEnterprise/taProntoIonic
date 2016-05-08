@@ -3,12 +3,14 @@ var userModule = angular.module('user', ['ui.router']);
 userModule.controller('UserController', function($scope, $http, $cordovaToast, UserService, $ionicLoading, $state) {
 	var self = this;
 	var BASE_URL ="https://tapronto1.herokuapp.com/users/";
-	var BASE_URL = "http://localhost:3000/users/";
+	//var BASE_URL = "http://localhost:3000/users/";
 	
 	this.user = {};
 	
 	this.saveUser = function() {
 		var headers = {"Content-Type": "application/json"};
+		console.log("oooooooooooooEEEEEEEEEEEEEEEEEEEEooooooooooooooooooooooooooo");
+		console.log(BASE_URL);
 		$ionicLoading.show();
 		$http({
 			method: 'POST',
@@ -27,6 +29,8 @@ userModule.controller('UserController', function($scope, $http, $cordovaToast, U
 
 	this.login=function(){
 		var headers = {"Content-Type": "application/json"};
+		console.log("oooooooooooooooooooooooooooooooooooooooo");
+		console.log(BASE_URL);
 		$ionicLoading.show();
 		$http({
 			method: 'POST',
