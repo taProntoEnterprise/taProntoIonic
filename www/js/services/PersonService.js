@@ -11,4 +11,13 @@ servicesModule.service("PersonService", function($http) {
 		return $http.get(url, {});
 	};
 	
+	this.atualizaPerson = function(idProvider) {
+		var url = BASE_URL + "/block/" + idProvider
+	}
+	
+	this.bloquearFornecedor = function(order){
+		var url = BASE_URL + "/block/" + order.provider + "?userId=" + order.client;
+		return $http.put(url, {});
+	};
+	
 });

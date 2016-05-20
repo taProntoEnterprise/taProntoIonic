@@ -1,9 +1,10 @@
-<ion-pane ng-controller="NotificationController as ctrl">
-  <ion-header-bar class="bar-positive">
-        <button ng-click="voltar()" class="button icon-left ion-left ion-chevron-left button-positive"></button>
+<ion-pane style="background-image: url('img/background_tapronto.png')!important;
+    background-size: cover !important;">
+  <ion-header-bar class="bar-balanced" ng-controller="NotificationController as ctrl">
+        <button ng-click="voltar()" class="button icon-left ion-left ion-chevron-left button-balanced"></button>
         <h1 class="title">Notificações</h1>
   </ion-header-bar>  
-  <ion-content>
+  <ion-content ng-controller="NotificationController as ctrl">
     <ion-list>
       <ion-item ng-repeat="notification in ctrl.notifications">
         {{notification.message}}.

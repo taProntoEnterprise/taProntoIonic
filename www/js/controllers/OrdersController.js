@@ -39,7 +39,6 @@ servicesModule.controller('OrdersController', function ($interval, $scope, $http
 				};
 			}
 		}, function (erro) {
-			$cordovaToast.showLongBottom("Não foi possível carregar as notificacoes.");
 		});
 	};
 
@@ -78,7 +77,6 @@ servicesModule.controller('OrdersController', function ($interval, $scope, $http
 	$scope.changeState = function(state, params){
 		console.log(state + params);
 		$state.go(state, params);
-		location.href()
 		location.reload();
 	};
 	

@@ -22,8 +22,7 @@ personModule.controller('PersonController', function($scope, $http, $cordovaToas
 			$cordovaToast.showLongBottom('Preencha todos os campos corretamente.');
 			return;
 		}
-		console.log("aquiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
-		console.log(self.editMode);
+
 		$ionicLoading.show();
 		$http({
 			method: self.editMode ? 'PUT':'POST',

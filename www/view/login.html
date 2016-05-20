@@ -1,21 +1,17 @@
-<ion-pane style="background: linear-gradient(to bottom right, gray, #0a6b47);">
+<ion-pane style="background-image: url('img/background_tapronto.png')!important;
+    background-size: cover !important;">
    <ion-content>
-   <div ng-controller='UserController as userCtrl'>
-    <div>
-      <div class="list">
-      	<img class="center" style="width:90%" src="img/logo.png" style="margin-top: 10%">
-		<input type="text" style="margin-top:20%" placeholder="Username" data-ng-model="userCtrl.user.username" class="inputLogin">
-		<input type="password" placeholder="Password" data-ng-model="userCtrl.user.password" class="inputLogin">
-  	</div>
+	   <div ng-controller='UserController as userCtrl' style='margin-top:35%'>
+			<div>
+			  <div class="list">
+				<img class="center" width="80%" src="img/logo.png" style="margin-bottom: 20%">
+				<input type="text" placeholder="Username" data-ng-model="userCtrl.user.username" class="inputLogin">
+				<input type="password" placeholder="Password" data-ng-model="userCtrl.user.password" class="inputLogin">
+			</div>
 
-  	<button class="buttonLogin button button-positive" ng-click="userCtrl.login()">Login</button>
-
-
-    </div>
-    <button ng-click="userCtrl.goToRegister()" class="buttonLogin button button-positive"> Register</button>
-	</div>
+			<button class="buttonLogin button button-balanced" ng-click="userCtrl.login()">Login</button>
+			<a ng-click="userCtrl.goToRegister()" class="pull-right" href="#" style="margin-right: 5%;"> Register</a>
+			</div>
+		</div>
   </ion-content>
-
-
-
 </ion-pane>

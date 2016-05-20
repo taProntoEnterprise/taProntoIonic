@@ -1,7 +1,8 @@
 <ion-side-menus ng-controller="OrdersController as ordersCtrl">
   <ion-side-menu-content>
-    <ion-pane>
-      <ion-header-bar class="bar-positive">
+    <ion-pane style="background-image: url('img/background_tapronto.png')!important;
+    background-size: cover !important;">
+      <ion-header-bar class="bar-balanced">
         <button class="button icon ion-navicon-round" ng-click="toggleLeft()"></button>
         <button class="button ion-earth" ng-click="getNotifications()">
         <span class="badge badge-assertive" ng-show="ordersCtrl.hasNotification">{{ordersCtrl.notifications.length}}</span>
@@ -11,18 +12,18 @@
       </ion-header-bar>
       
       <ion-content>
-        <ion-list>
+        <ion-list >
           <ion-item ng-repeat="order in ordersCtrl.orders"
                     href="#/order/{{order._id}}" >
-            {{order.description}}.
+            {{order.description}}Design e construção de armário.
           </ion-item>
         </ion-list>
-        <button class="button" ng-click="populan()"> Popular </button>
+        <!--button class="button" ng-click="populan()"> Popular </button-->
       </ion-content>
     </ion-pane>
   </ion-side-menu-content>
   <ion-side-menu side="left">
-    <header class="bar bar-header bar-stable">
+    <header class="bar bar-header bar-balanced">
       <h1 class="title">Menu</h1>
     </header>
     <ion-content class="has-header">
