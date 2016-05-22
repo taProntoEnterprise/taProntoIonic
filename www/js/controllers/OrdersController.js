@@ -75,9 +75,10 @@ servicesModule.controller('OrdersController', function ($interval, $scope, $http
 	};
 
 	$scope.changeState = function(state, params){
-		console.log(state + params);
+		$ionicLoading.show();
 		$state.go(state, params);
 		location.reload();
+		$ionicLoading.hide();
 	};
 	
 	$scope.changeStatePerson = function(){

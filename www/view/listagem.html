@@ -3,18 +3,20 @@
     <ion-pane style="background-image: url('img/background_tapronto.png')!important;
     background-size: cover !important;">
       <ion-header-bar class="bar-balanced">
-        <button class="button icon ion-navicon-round" ng-click="toggleLeft()"></button>
-        <button class="button ion-earth" ng-click="getNotifications()">
-        <span class="badge badge-assertive" ng-show="ordersCtrl.hasNotification">{{ordersCtrl.notifications.length}}</span>
+        <div class="title">
+		<button class="button icon ion-navicon-round pull-left" ng-click="toggleLeft()"></button>
+        <button class="button ion-earth pull-left" ng-click="getNotifications()">
+        <span class="badge badge-assertive pull-left" ng-show="ordersCtrl.hasNotification">{{ordersCtrl.notifications.length}}</span>
         </button>
-        <h1 class="title pull-left">Meus pedidos</h1>
-        <button class="button ion-android-exit" ng-click="logout()"></button>
+        Meus pedidos
+        <button class="button ion-android-exit pull-right" ng-click="logout()"></button>
+		</div>
       </ion-header-bar>
       
       <ion-content>
         <ion-list >
           <ion-item ng-repeat="order in ordersCtrl.orders"
-                    href="#/order/{{order._id}}" >
+                    href="#/order/{{order._id}}" class="transbox">
             {{order.description}}Design e construção de armário.
           </ion-item>
         </ion-list>

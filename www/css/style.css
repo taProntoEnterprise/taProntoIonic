@@ -23,3 +23,9 @@ img.center{
 	margin-left: 5%;
 	margin-right: 5%;
 }
+
+.transbox {
+  background-color: #000000;
+  opacity: 0.6;
+  filter: alpha(opacity=60); /* For IE8 and earlier */
+}

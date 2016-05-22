@@ -42,8 +42,10 @@ personModule.controller('PersonController', function($scope, $http, $cordovaToas
 	};
 	
 	this.goToOrders = function() {
+		$ionicLoading.show();
 		window.location.href="#/orders/" + $stateParams.id;
 		location.reload();
+		$ionicLoading.hide();
 	};
 	
 	this.shouldLeftSideMenuBeEnabled = function() {

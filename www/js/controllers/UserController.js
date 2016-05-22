@@ -41,6 +41,7 @@ userModule.controller('UserController', function($scope, $http, $cordovaToast, U
 			var user = response.data.result.data;
 			UserService.setUser(user);
 			$ionicLoading.hide();
+			console.log(user.person);
 			if (user.person === undefined) {
 				//$state.go("registerPerson", {id: user._id});
 				window.location.href="#/registerPerson/" + user._id;
