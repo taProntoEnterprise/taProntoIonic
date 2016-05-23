@@ -47,7 +47,6 @@ servicesModule.controller('OrdersController', function ($interval, $scope, $http
 		var promise = PersonService.getPerson(self.userId);
 		promise.then(function(response){
 			self.person = response.data.result.data;
-			$scope.startPooling();
 		});
 	};
 
@@ -84,6 +83,11 @@ servicesModule.controller('OrdersController', function ($interval, $scope, $http
         self.pooling = $interval(self.carregar, self.interval);
     };
 
+    $scope.changeStateBlocke = function(){
+        window.location.href = "#/bloqueados/"+ self.userId;
+        location.reload();
+    };
+
     $scope.$on("$ionicView.enter", function(event, data){
     	if (self.pooling == undefined){
     		$scope.startPooling();
@@ -95,5 +99,6 @@ servicesModule.controller('OrdersController', function ($interval, $scope, $http
 	(function main(){
 		self.carregarNotifications();
   		self.carregarOrders();
+  		self.carregarPerson()
 	})();
 });

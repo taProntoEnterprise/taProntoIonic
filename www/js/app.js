@@ -42,6 +42,11 @@ angular.module('starter', ['ionic', 'user', 'ngCordova','service','order', 'pers
   .state('notification',{
     url:'/notification/:id',
     templateUrl:'view/notifications.html'
+  })
+
+  .state('bloqueados',{
+    url:'/bloqueados/:id',
+    templateUrl:'view/bloqueados.html'
   });
 
   $urlRouterProvider.otherwise('/');
