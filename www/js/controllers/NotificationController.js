@@ -16,7 +16,7 @@ notificationModule.controller("NotificationController",
 
 	this.carregarNotifications = function(){
 		$ionicLoading.show();
-		var promise = NotificationService.getNotification("5741da8b4bf268f51980a45a", {delivered:false});//self.userId);
+		var promise = NotificationService.getNotification(self.userId, {delivered:false});//self.userId);
 		promise.then(function (response){
 			$ionicLoading.hide();
 			if (response != undefined) {
@@ -31,7 +31,7 @@ notificationModule.controller("NotificationController",
 
 	this.carregarNotificationsLidas = function(){
 		$ionicLoading.show();
-		var promise = NotificationService.getNotification("5741da8b4bf268f51980a45a", {delivered:true});//self.userId);
+		var promise = NotificationService.getNotification(self.userId, {delivered:true});//self.userId);
 		promise.then(function (response){
 			$ionicLoading.hide();
 			if (response != undefined) {

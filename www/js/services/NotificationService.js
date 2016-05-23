@@ -4,7 +4,7 @@ servicesModule.service("NotificationService", function($http) {
 
 	var self = this;
 	var BASE_URL = "https://tapronto1.herokuapp.com/notifications"
-	var BASE_URL = "http://localhost:3000/notifications"
+	//var BASE_URL = "http://localhost:3000/notifications"
 
    /**
 	* Retorna a lista de notificacoes associadas ao id de user

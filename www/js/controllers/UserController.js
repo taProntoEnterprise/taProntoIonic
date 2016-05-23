@@ -3,8 +3,8 @@ var userModule = angular.module('user', ['ui.router']);
 userModule.controller('UserController', function($scope, $http, $cordovaToast, UserService, $ionicLoading, $state, PersonService) {
 	var self = this;
 	var BASE_URL ="https://tapronto1.herokuapp.com/users/";
-	var BASE_URL = "http://localhost:3000/users/";
-	
+	//var BASE_URL = "http://localhost:3000/users/";
+
 	this.user = {};
 	
 	this.saveUser = function() {

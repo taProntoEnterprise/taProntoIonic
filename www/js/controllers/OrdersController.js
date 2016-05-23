@@ -33,7 +33,7 @@ servicesModule.controller('OrdersController', function ($interval, $scope, $http
 
 	this.carregarNotifications = function(){
 		var personId = $stateParams.personId;
-		var promise = NotificationService.getNotification(self.person._id, {delivered:false});//self.userId);
+		var promise = NotificationService.getNotification(self.userId, {delivered:false});//self.userId);
 		promise.then(function (response){
 			if (response != undefined) {
 				self.notifications = response.data.result.data;
@@ -49,7 +49,6 @@ servicesModule.controller('OrdersController', function ($interval, $scope, $http
 		var promise = PersonService.getPerson(self.userId);
 		promise.then(function(response){
 			self.person = response.data.result.data;
-			self.carregarNotifications();
 			$scope.startPooling();
 		});
 	};
@@ -86,12 +85,12 @@ servicesModule.controller('OrdersController', function ($interval, $scope, $http
     	if (self.pooling == undefined){
     		$scope.startPooling();
     	}
-    	self.carregarPerson();
+		self.carregarNotifications();
   		self.carregarOrders();
 	});
 
 	(function main(){
-		self.carregarOrders();
+		self.carregarNotifications();
 		self.carregarPerson();
 	})();
 });

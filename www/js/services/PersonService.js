@@ -4,7 +4,7 @@ servicesModule.service("PersonService", function($http) {
 
 	var self = this;
 	var BASE_URL = "https://tapronto1.herokuapp.com/person"
-	var BASE_URL = "http://localhost:3000/"
+	//var BASE_URL = "http://localhost:3000/";
 
 	this.getPerson = function(userId) {
 		var url = BASE_URL + "person/" + userId;
