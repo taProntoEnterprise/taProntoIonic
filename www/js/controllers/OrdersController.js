@@ -18,10 +18,8 @@ servicesModule.controller('OrdersController', function ($interval, $scope, $http
 	this.person;
 
 	this.carregarOrders = function(){
-		$ionicLoading.show();
 		var promise = OrderService.getOrder(self.userId);
 		promise.then(function (response){
-			$ionicLoading.hide();
 			if (response != undefined) {
 				self.orders = response.data.result.data;
 			}
@@ -53,6 +51,11 @@ servicesModule.controller('OrdersController', function ($interval, $scope, $http
 		});
 	};
 
+	this.carregar = function() {
+		self.carregarNotifications();
+  		self.carregarOrders();
+	}
+
 	$scope.toggleLeft = function() {
       $ionicSideMenuDelegate.toggleLeft();
     };
@@ -78,7 +81,7 @@ servicesModule.controller('OrdersController', function ($interval, $scope, $http
 	};
 
 	$scope.startPooling = function(){
-        self.pooling = $interval(self.carregarNotifications, self.interval);
+        self.pooling = $interval(self.carregar, self.interval);
     };
 
     $scope.$on("$ionicView.enter", function(event, data){
@@ -91,6 +94,6 @@ servicesModule.controller('OrdersController', function ($interval, $scope, $http
 
 	(function main(){
 		self.carregarNotifications();
-		self.carregarPerson();
+  		self.carregarOrders();
 	})();
 });
