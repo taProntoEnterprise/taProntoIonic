@@ -15,6 +15,8 @@ servicesModule.controller('OrdersController', function ($interval, $scope, $http
 
 	this.pooling;
 
+	this.person;
+
 	this.carregarOrders = function(){
 		$ionicLoading.show();
 		var promise = OrderService.getOrder(self.userId);
@@ -31,7 +33,7 @@ servicesModule.controller('OrdersController', function ($interval, $scope, $http
 
 	this.carregarNotifications = function(){
 		var personId = $stateParams.personId;
-		var promise = NotificationService.getNotification("5741da8b4bf268f51980a45a", {delivered:false});//self.userId);
+		var promise = NotificationService.getNotification(self.person._id, {delivered:false});//self.userId);
 		promise.then(function (response){
 			if (response != undefined) {
 				self.notifications = response.data.result.data;
@@ -40,6 +42,15 @@ servicesModule.controller('OrdersController', function ($interval, $scope, $http
 				};
 			}
 		}, function (erro) {
+		});
+	};
+
+	this.carregarPerson = function(){
+		var promise = PersonService.getPerson(self.userId);
+		promise.then(function(response){
+			self.person = response.data.result.data;
+			self.carregarNotifications();
+			$scope.startPooling();
 		});
 	};
 
@@ -53,26 +64,6 @@ servicesModule.controller('OrdersController', function ($interval, $scope, $http
 
 	$scope.getNotifications =  function() {
 		$scope.changeState("notification", {id: self.userId});
-	};
-
-	$scope.populan =  function() {
-		var nots = {};
-		nots.order = "57227390b0bcaa1600dc90af";
-		nots.notifier = self.userId;
-		nots.notified = self.userId;
-		nots.message = "taPronto";
-
-		$ionicLoading.show();
-		var promise = NotificationService.addOrder(nots);
-		promise.then(function (response){
-			$ionicLoading.hide();
-			if (response != undefined) {
-				//self.carregarNotifications();
-			}
-		}, function (erro) {
-			$ionicLoading.hide();
-			$cordovaToast.showLongBottom("Não foi possível salvar as notificacoes.");
-		});
 	};
 
 	$scope.changeState = function(state, params){
@@ -95,12 +86,12 @@ servicesModule.controller('OrdersController', function ($interval, $scope, $http
     	if (self.pooling == undefined){
     		$scope.startPooling();
     	}
+    	self.carregarPerson();
   		self.carregarOrders();
 	});
 
 	(function main(){
 		self.carregarOrders();
-		self.carregarNotifications();
-		$scope.startPooling();
+		self.carregarPerson();
 	})();
 });

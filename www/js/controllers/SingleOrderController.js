@@ -23,7 +23,6 @@ orderModule.controller('SingleOrderController', function ($scope, $http, $cordov
 	};
 
 	this.getProvider = function(){
-		console.log("oiiiii");
 		var promise = PersonService.getProvider(self.order.provider);
 		promise.then(function(response){
 			self.provider = response.data.result.data;
