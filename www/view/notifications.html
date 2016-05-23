@@ -4,11 +4,37 @@
         <button ng-click="voltar()" class="button icon-left ion-left ion-chevron-left button-balanced"></button>
         <h1 class="title">Notificações</h1>
   </ion-header-bar>  
+  
   <ion-content ng-controller="NotificationController as ctrl">
-    <ion-list>
-      <ion-item ng-repeat="notification in ctrl.notifications">
-        {{notification.message}}.
-      </ion-item>
-    </ion-list>
+    <br>
+    <br>
+    <br>
+    <div>
+      <label class="item-floating-label">
+        <p>Notificações não lidas</p>
+      </label>
+
+      <ion-list>
+        <ion-item ng-repeat="notification in ctrl.notifications track by $index">
+          <p>Empresa: {{notification.notifier.provider}}</p>
+          <p>Servico: {{notification.order.description}}</p>
+          <p>Status: {{notification.order.status}}</p>
+        </ion-item>
+      </ion-list>
+    </div>
+
+    <div>
+      <br>
+      <label class="item-floating-label">
+        <p>Notificações lidas</p>
+      </label>
+      <ion-list>
+        <ion-item ng-repeat="notification in ctrl.notificationsLidas track by $index">
+          <p>Empresa: {{notification.notifier.provider}}</p>
+          <p>Servico: {{notification.order.description}}</p>
+          <p>Status: {{notification.order.status}}</p>
+        </ion-item>
+      </ion-list>
+    </div>
   </ion-content> 
 </ion-pane>

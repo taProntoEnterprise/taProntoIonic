@@ -5,10 +5,12 @@ orderModule.controller('SingleOrderController', function ($scope, $http, $cordov
 
 	this.orderId = $stateParams.id;
 
+	this.provider;
+
 	self.order;
 
 	$scope.voltar = function() {
-	    $state.go("orders"); 
+	    $state.go("orders", {id: self.order.client}); 
 	};
 	
 	this.bloquearFornecedor = function () {
@@ -20,6 +22,14 @@ orderModule.controller('SingleOrderController', function ($scope, $http, $cordov
 		});
 	};
 
+	this.getProvider = function(){
+		console.log("oiiiii");
+		var promise = PersonService.getProvider(self.order.provider);
+		promise.then(function(response){
+			self.provider = response.data.result.data;
+		});
+	};
+
 	$scope.$on("$ionicView.enter", function(event, data){
 		$ionicLoading.show();
 		var promise = OrderService.getSingleOrder(self.orderId);
@@ -27,6 +37,7 @@ orderModule.controller('SingleOrderController', function ($scope, $http, $cordov
 			$ionicLoading.hide();
 			if (response != undefined) {
 				self.order = response.data.result.data[0];
+				self.getProvider();
 			}
 		}, function (erro) {
 			$cordovaToast.showLongBottom("Não foi possível carregar o seu pedido.");
@@ -38,11 +49,9 @@ orderModule.controller('SingleOrderController', function ($scope, $http, $cordov
 		var promise = OrderService.getSingleOrder(self.orderId);
 		promise.then(function (response){
 			$ionicLoading.hide();
-			console.log("undefined");
 			if (response != undefined) {
-				console.log("oooooooooo")
-				console.log(response.data.result.data);
 				self.order = response.data.result.data;
+				self.getProvider();
 			}
 		}, function (erro) {
 			$cordovaToast.showLongBottom("Não foi possível carregar o seu pedido.");

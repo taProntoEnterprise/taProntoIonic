@@ -9,15 +9,15 @@
 	<br><br><br>
   	<div class="row">
 	  	<ion-label class="col-sm-4"><b>Serviço: </b></ion-label>
-	    <ion-label class="col-sm-8"> Design e construção de armário </ion-label>
+	    <ion-label class="col-sm-8">{{ orderCtrl.order.service.name }}</ion-label>
     </div>
     <div class="row">
 	  	<ion-label class="col-sm-4"><b>Empresa: </b></ion-label>
-	    <ion-label class="col-sm-8"> Tok&Stok</ion-label>
+	    <ion-label class="col-sm-8">{{ orderCtrl.provider.name }}</ion-label>
     </div>
     <div class="row">
 	  	<ion-label class="col-sm-4"><b>Data de solicitação: </b></ion-label>
-	    <ion-label class="col-sm-8">09/05/2016</ion-label>
+	    <ion-label class="col-sm-8">{{ orderCtrl.order.creation_date }}</ion-label>
     </div>
     <div class="row">
 	  	<ion-label class="col-sm-4"><b>Status: </b></ion-label>
@@ -29,7 +29,7 @@
     </div>
     <div class="row">
 	  	<ion-label class="col-md-4"><b>Descrição: </b></ion-label>
-	    <ion-label class="col-md-8">Design de um armário para livros, 1.60 de altura por 50 cm de largura. </ion-label>
+	    <ion-label class="col-md-8">{{ orderCtrl.order.description }}</ion-label>
     </div>
   </ion-content>
 

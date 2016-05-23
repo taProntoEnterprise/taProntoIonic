@@ -1,6 +1,6 @@
 var servicesModule = angular.module('service', []);
 
-servicesModule.controller('OrdersController', function ($interval, $scope, $http, $cordovaToast, OrderService,UserService, $ionicLoading, $stateParams, $state, $ionicSideMenuDelegate, NotificationService) {
+servicesModule.controller('OrdersController', function ($interval, $scope, $http, $cordovaToast, OrderService,UserService, $ionicLoading, $stateParams, $state, $ionicSideMenuDelegate, NotificationService, PersonService) {
 	var self = this;
 
 	this.userId = $stateParams.id;
@@ -30,7 +30,8 @@ servicesModule.controller('OrdersController', function ($interval, $scope, $http
 	};
 
 	this.carregarNotifications = function(){
-		var promise = NotificationService.getNotification(self.userId);
+		var personId = $stateParams.personId;
+		var promise = NotificationService.getNotification("5741da8b4bf268f51980a45a", {delivered:false});//self.userId);
 		promise.then(function (response){
 			if (response != undefined) {
 				self.notifications = response.data.result.data;
@@ -89,6 +90,13 @@ servicesModule.controller('OrdersController', function ($interval, $scope, $http
 	$scope.startPooling = function(){
         self.pooling = $interval(self.carregarNotifications, self.interval);
     };
+
+    $scope.$on("$ionicView.enter", function(event, data){
+    	if (self.pooling == undefined){
+    		$scope.startPooling();
+    	}
+  		self.carregarOrders();
+	});
 
 	(function main(){
 		self.carregarOrders();
