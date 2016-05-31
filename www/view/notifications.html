@@ -16,7 +16,6 @@
 
       <ion-list>
         <ion-item ng-repeat="notification in ctrl.notifications track by $index">
-          <p>Empresa: {{notification.notifier.provider}}</p>
           <p>Servico: {{notification.order.description}}</p>
           <p>Status: {{notification.order.status}}</p>
         </ion-item>
@@ -30,7 +29,6 @@
       </label>
       <ion-list>
         <ion-item ng-repeat="notification in ctrl.notificationsLidas track by $index">
-          <p>Empresa: {{notification.notifier.provider}}</p>
           <p>Servico: {{notification.order.description}}</p>
           <p>Status: {{notification.order.status}}</p>
         </ion-item>
