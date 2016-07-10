@@ -11,6 +11,11 @@ servicesModule.service("PersonService", function($http) {
 		return $http.get(url, {});
 	};
 
+	this.getUser = function(userId) {
+		var url = BASE_URL + "person/?userId=" + userId;
+		return $http.get(url, {});
+	};
+
 	this.getProvider = function(userId) {
 		var url = BASE_URL + "providers/" + userId;
 		return $http.get(url, {});

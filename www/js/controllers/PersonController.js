@@ -22,7 +22,7 @@ personModule.controller('PersonController', function($scope, $http, $cordovaToas
 			$cordovaToast.showLongBottom('Preencha todos os campos corretamente.');
 			return;
 		}
-
+		
 		$ionicLoading.show();
 		$http({
 			method: self.editMode ? 'PUT':'POST',
@@ -33,7 +33,7 @@ personModule.controller('PersonController', function($scope, $http, $cordovaToas
 			$ionicLoading.hide();
 		    $cordovaToast.showLongBottom('Perfil atualizado com sucesso.');
 			if (!self.editMode) {
-				$state.go("orders")
+				self.goToOrders()
 			}
 		}, function(info) {
 			$ionicLoading.hide();
@@ -54,7 +54,7 @@ personModule.controller('PersonController', function($scope, $http, $cordovaToas
 	
 	(function main(){
 		$ionicLoading.show();
-		var promise = PersonService.getPerson($stateParams.id);
+		var promise = PersonService.getUser($stateParams.id);
 		promise.then(function (response){
 			$ionicLoading.hide();
 			self.editMode = true;
