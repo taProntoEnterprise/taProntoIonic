@@ -23,9 +23,7 @@ servicesModule.controller('OrdersController', function ($interval, $scope, $http
 			if (response != undefined) {
 				self.orders = response.data.result.data;
 			}
-		}, function (erro) {
 			$ionicLoading.hide();
-			$cordovaToast.showLongBottom("Não foi possível carregar os seus pedidos.");
 		});
 	};
 
@@ -47,6 +45,7 @@ servicesModule.controller('OrdersController', function ($interval, $scope, $http
 		var promise = PersonService.getPerson(self.userId);
 		promise.then(function(response){
 			self.person = response.data.result.data;
+			$ionicLoading.hide();
 		});
 	};
 
@@ -75,6 +74,7 @@ servicesModule.controller('OrdersController', function ($interval, $scope, $http
 	};
 	
 	$scope.changeStatePerson = function(){
+		$ionicLoading.show();
 		window.location.href = "#/registerPerson/"+ self.userId;
 		location.reload();
 	};
@@ -97,6 +97,7 @@ servicesModule.controller('OrdersController', function ($interval, $scope, $http
 	});
 
 	(function main(){
+		$ionicLoading.show();
 		self.carregarNotifications();
   		self.carregarOrders();
   		self.carregarPerson()

@@ -1,11 +1,11 @@
 <ion-pane style="background-image: url('img/background_tapronto.png')!important;
-    background-size: cover !important;" >
+    background-size: cover !important;">
   <ion-header-bar class="bar-balanced" ng-controller="SingleOrderController as orderCtrl">
     <button ng-click="voltar()" class="button icon-left ion-left ion-chevron-left button-balanced"></button>
     <h1 class="title">Pedido {{ orderCtrl.order.code }}</h1>
   </ion-header-bar>
  
-  <ion-content ng-controller="SingleOrderController as orderCtrl">
+  <ion-content ng-controller="SingleOrderController as orderCtrl" style="margin-bottom:10%">
 	<br><br><br>
   	<div class="row">
 	  	<ion-label class="col-sm-4"><b>Serviço: </b></ion-label>
@@ -32,11 +32,10 @@
 	    <ion-label class="col-md-8">{{ orderCtrl.order.description }}</ion-label>
     </div>
   </ion-content>
-
-  <div class="bar bar-footer" ng-controller="SingleOrderController as orderCtrl">
+</ion-pane>
+<div class="bar bar-footer" ng-controller="SingleOrderController as orderCtrl">
 	<ion-pane style="background-image: url('img/background_tapronto.png')!important;
     background-size: cover !important;" >
 		<button class="button button-balanced" ng-click="orderCtrl.bloquearFornecedor()" style="margin-left: 2%; margin-top: 2%;">Bloquear fornecedor</button>
 	</ion-pane>
   </div>
-</ion-pane>
