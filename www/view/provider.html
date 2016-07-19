@@ -1,0 +1,33 @@
+<ion-pane style="background-image: url('img/background_tapronto.png')!important;
+    background-size: cover !important;">
+  <ion-header-bar class="bar-balanced" ng-controller="ProviderController as providerCtrl">
+    <button ng-click="providerCtrl.voltar()" class="button icon-left ion-left ion-chevron-left button-balanced"></button>
+    <h1 class="title">Fornecedor</h1>
+  </ion-header-bar>
+ 
+  <ion-content ng-controller="ProviderController as providerCtrl" style="margin-bottom:10%">
+	<br><br><br>
+  	<div class="row">
+	  	<ion-label class="col-sm-4"><b>Nome: </b></ion-label>
+	    <ion-label class="col-sm-8">{{ providerCtrl.provider.name }}</ion-label>
+    </div>
+    <div class="row">
+	  	<ion-label class="col-sm-4"><b>Descrição: </b></ion-label>
+	    <ion-label class="col-sm-8">{{ providerCtrl.provider.description[0] }}</ion-label>
+    </div>
+	<div class="row">
+	  	<ion-label class="col-sm-4"><b>Telefones: </b></ion-label>
+	    <ion-label class="col-sm-8">{{ providerCtrl.getPhones() }}</ion-label>
+    </div>
+	<div class="row">
+	  	<ion-label class="col-sm-4"><b>Emails: </b></ion-label>
+	    <ion-label class="col-sm-8">{{ providerCtrl.getEmails() }}</ion-label>
+    </div>
+  </ion-content>
+</ion-pane>
+<div class="bar bar-footer" ng-controller="ProviderController as providerCtrl">
+	<ion-pane style="background-image: url('img/background_tapronto.png')!important;
+    background-size: cover !important;" >
+		<button class="button button-balanced" ng-click="providerCtrl.desbloquearFornecedor()" style="margin-left: 2%; margin-top: 2%;">Desbloquear fornecedor</button>
+	</ion-pane>
+  </div>

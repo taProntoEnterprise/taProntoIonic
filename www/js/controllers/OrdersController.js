@@ -27,6 +27,12 @@ servicesModule.controller('OrdersController', function ($interval, $scope, $http
 		});
 	};
 
+	this.goToProvider = function(id) {
+		$ionicLoading.show();
+		window.location.href="#/bloqueados/" + self.userId + "/provider/" + id;
+		location.reload();
+	};
+
 	this.carregarNotifications = function(){
 		var personId = $stateParams.personId;
 		var promise = NotificationService.getNotification(self.userId, {delivered:false});//self.userId);

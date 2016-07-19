@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic', 'user', 'ngCordova','service','order', 'person','ui.router', 'notification'])
+angular.module('starter', ['ionic', 'user', 'ngCordova','service','order', 'person','ui.router', 'notification', 'provider'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -47,6 +47,10 @@ angular.module('starter', ['ionic', 'user', 'ngCordova','service','order', 'pers
   .state('bloqueados',{
     url:'/bloqueados/:id',
     templateUrl:'view/bloqueados.html'
+  })
+  .state('provider',{
+    url:'/bloqueados/:userId/provider/:id',
+    templateUrl:'view/provider.html'
   });
 
   $urlRouterProvider.otherwise('/');
