@@ -1,9 +1,9 @@
 var userModule = angular.module('user', ['ui.router']);
 
-userModule.controller('UserController', function($scope, $http, $cordovaToast, UserService, $ionicLoading, $state, PersonService) {
+userModule.controller('UserController', function($rootScope, $scope, $http, $cordovaToast, UserService, $ionicLoading, $state, PersonService) {
 	var self = this;
 	var BASE_URL ="https://tapronto1.herokuapp.com/users/";
-	//var BASE_URL = "http://localhost:3000/users/";
+	//var BASE_URL = "http://192.168.25.8:3000/users/";
 
 	this.user = {};
 	
@@ -28,6 +28,7 @@ userModule.controller('UserController', function($scope, $http, $cordovaToast, U
 	this.login=function(){
 		var headers = {"Content-Type": "application/json"};
 		$ionicLoading.show();
+		this.user.gcmId = $rootScope.gcmId;
 		$http({
 			method: 'POST',
 			url: BASE_URL+'login',

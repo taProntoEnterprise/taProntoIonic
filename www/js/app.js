@@ -1,6 +1,7 @@
 angular.module('starter', ['ionic', 'user', 'ngCordova','service','order', 'person','ui.router', 'notification', 'provider'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $q, $cordovaPush, $rootScope, $cordovaDialogs, PushProcessingService, $ionicLoading) {
+	PushProcessingService.initialize();
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);

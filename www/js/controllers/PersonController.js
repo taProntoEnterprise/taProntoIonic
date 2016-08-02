@@ -5,7 +5,7 @@ personModule.controller('PersonController', function($scope, $http, $cordovaToas
 
 	var BASE_URL ="https://tapronto1.herokuapp.com/person";
 	
-	//var BASE_URL = "http://localhost:3000/person";
+	//var BASE_URL = "http://192.168.25.8:3000/person";
 	
 	this.person = {user: $stateParams.id};
 	
